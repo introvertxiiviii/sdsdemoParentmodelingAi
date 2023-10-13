@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Parental Mediation AI DEMO</title>
+  </head>
+  <body class="bg-gradient-to-b from-green-400 to-green-600">
+    <div class="container mx-auto p-5">
+      <div class="text-center my-5">
+        <h1 class="text-3xl font-bold text-white">Parental Mediation AI</h1>
+      </div>
+      <div class="card bg-white rounded-lg shadow-lg">
+        <div class="card-body">
+          <h2 class="text-xl font-bold mb-4 text-gray-800">
+            Parental Dispute Mediation DEMO
+          </h2>
+          <p>
+            When two parents separate, there can be a dispute over
+            responsibility for their children. These disputes often lead to a
+            legal process that is lengthy, stressful, and time-consuming for the
+            parents. The process of Mediation is designed to resolve these
+            disputes, and going to court, but Mediation can still be expensive
+            and ineffective.
+          </p>
+        </div>
+      </div>
+      <div class="card mt-5 bg-white rounded-lg shadow-lg">
+        <div class="card-body">
+          <h2 class="text-xl font-bold mb-4 text-gray-800">
+            Enter the situation:
+          </h2>
+          <textarea
+            id="user-input"
+            class="form-control mb-4"
+            rows="4"
+          ></textarea>
+          <button id="submit-btn" class="btn btn-primary">
+            Get Mediation Suggestions
+          </button>
+        </div>
+      </div>
+      <div class="mt-5" id="mediation-suggestions">
+        <h2 class="text-xl font-bold mb-4 text-gray-800">
+          Mediation Suggestions:
+        </h2>
+        <ul class="list-group">
+          <!-- Suggestions will be added here -->
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // Simulate mediation suggestions (replace with actual API calls)
+      function getMediationSuggestions(userInput) {
+        // Simulate AI response
+        return [
+          "Listen to both sides attentively.",
+          "Try to find common ground.",
+          "Consider involving a neutral mediator.",
+        ];
+      }
+
+      // Event listener for the "Get Mediation Suggestions" button
+      document
+        .getElementById("submit-btn")
+        .addEventListener("click", function () {
+          const userInput = document.getElementById("user-input").value;
+          const suggestions = getMediationSuggestions(userInput);
+          const suggestionsList = document.getElementById(
+            "mediation-suggestions"
+          );
+
+          // Clear existing suggestions
+          suggestionsList.innerHTML = "";
+
+          // Add new suggestions to the list with fade-in animation
+          suggestions.forEach((suggestion, index) => {
+            setTimeout(() => {
+              const listItem = document.createElement("li");
+              listItem.classList.add(
+                "list-group-item",
+                "animate__animated",
+                "animate__fadeIn"
+              );
+              listItem.innerText = suggestion;
+              suggestionsList.appendChild(listItem);
+            }, index * 200);
+          });
+        });
+    </script>
+  </body>
+</html>
